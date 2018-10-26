@@ -6,10 +6,10 @@ The ```refreddit.py``` script uses Reddit's PRAW library (so install that first)
 
 
 ### Behavior
-On first run, it will collect historic posts and comments that are available from the subreddits that you select - this takes some time. I think historic data is limited to 1000 or-so posts. After that is done, it will loop back and check for new posts. Then it checks for updates to posts that were collected, so the output data will include new replies and edited versions of post text. 
+On first run, it will collect up to 1000 historic posts and associated comments that are available from the subreddits that you select - this takes some time due to API limits. After those data are captured, it will loop back and check for new posts. Then it systematically  checks for updates to posts that were collected, so the output data will also include new comments and edited versions of previously captured text. Rinse and repeat. 
 
 ### Data format
-Output folder structure is: (1) subreddit name, (2) post capture date as YYYYMMDD format, (3) post ID, (4) comment ID and the comment ID that was responded to, if the comment is a response. Text data are stored in .txt files within folders (file name includes epoch datetime of the post or comment). Some metadata are stored in .csv files within folders (includes data capture timestamps, upvote minus downvote score, number of comments, etc.). 
+Output subfolder structure is: (1) subreddit name, (2) post capture date as YYYYMMDD format, (3) post ID, (4) comment ID and the comment ID that was responded to if the comment is a response. Text data are stored in .txt files within folders (file name is epoch datetime of the post or comment). Some metadata are stored in .csv files within folders (includes data capture timestamps, upvote minus downvote score, number of comments, etc.). 
 
 
 ### Other technical notes:
@@ -17,5 +17,5 @@ The Reddit API is rate limited, so data refresh frequency is inversely related t
 
 The process relies on reviewing metadata output to know what new data needs collecting. So, if you move files or folders out of the established data output directories, it will assume that the data don't exist and waste time recollecting them. Posts older than 180 days are considered "retired" so those might be safe to move (but only if they preceed the 1000 most recent posts - there's some ambiguity around this in the code because I only just thought about it while typing this sentence). 
 
-This implementation includes an optional dependency on Sentry's Raven library (so that errors can be broadcast to a Slack channel). I think that I managed to comment-out all of those dependencies in this code. 
+This implementation includes an optional dependency on Sentry's Raven library (so that errors can be broadcast to a Slack channel). I think that I managed to comment-out all of those dependencies in the code. 
 

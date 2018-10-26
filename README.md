@@ -6,7 +6,7 @@ The ```refreddit.py``` script uses Reddit's PRAW library (so install that first)
 
 
 ### Behavior
-On first run, it will collect up to 1000 historic posts and associated comments that are available from the subreddits that you select - this takes some time due to API limits. After those data are captured, it will loop back and check for new posts. Then it systematically  checks for updates to posts that were collected, so the output data will also include new comments and edited versions of previously captured text. Rinse and repeat. 
+On first run, it will collect up to 1000 most-recent posts and associated comments that are available from the subreddits that you select - this takes some time due to API limits. After those data are captured, it will loop back and check for new posts. Then it systematically  checks for updates to posts that were collected, so the output data will also include new comments and edited versions of previously captured text. Rinse and repeat. 
 
 ### Data format
 Output subfolder structure is: (1) subreddit name, (2) post capture date as YYYYMMDD format, (3) post ID, (4) comment ID and the comment ID that was responded to if the comment is a response. Text data are stored in .txt files within folders (file name is epoch datetime of the post or comment). Some metadata are stored in .csv files within folders (includes data capture timestamps, upvote minus downvote score, number of comments, etc.). 

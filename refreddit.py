@@ -2,30 +2,30 @@
 """
 Created on Wed Dec 20 20:05:11 2017
 
-@author: jason
+@author: colditzjb
 """
-import praw, os, datetime, time
-from raven import Client
+import os, datetime, time
 
-r_client = Client(
-    # This is the secret key
-    dsn = 'SECRET KEY HERE (THIS IS AN URL)',
+import praw #PRAW is not a standard library, so install it first 
 
-    # This will appear as the host name in alerts
-    name='HOSTNAME HERE',
-        
-    ignore_exceptions = [
-            'Http404',
-            'django.exceptions.*',
-            TypeError,
-            ValueError,
-            ]
-    )
-
+### Raven is a Sentry implementation that broadcasts errors to other platforms (e.g., Slack channel)
+#from raven import Client
+#r_client = Client(
+#    # This is the secret key
+#    dsn = 'SECRET KEY HERE (THIS IS AN URL)',
+#
+#    # This will appear as the host name in alerts
+#    name='HOSTNAME HERE',
+#        
+#    ignore_exceptions = [
+#            'Http404',
+#            'django.exceptions.*',
+#            TypeError,
+#            ValueError,
+#            ]
+#    )
 
 dir_data = './data/reddit_stream/' # Include the trailing slash!
-
-
 
 reddit = praw.Reddit(client_id='USE YOUR REDDIT API CREDS HERE',
                      client_secret='USE YOUR REDDIT API CREDS HERE',
@@ -33,21 +33,23 @@ reddit = praw.Reddit(client_id='USE YOUR REDDIT API CREDS HERE',
                      user_agent='USE YOUR REDDIT API CREDS HERE',
                      username='USE YOUR REDDIT API CREDS HERE')
 
-#print(reddit.user.me()) 
+#print(reddit.user.me()) #Check that the Reddit API is set up and connected properly
+
 
 sublist = ['pics', 'lolcats', 'eli5'] # UPDATE THIS TO INCLUDE SUBREDDITS THAT YOU WANT TO FOLLOW
+
 
 """
 ERROR AND PROCESS LOGGING:
     log_level (integer: between 0 and 9)
-        9: includes all checkpoints for tracking and debugging processes
+        9: logs all process checkpoints for tracking and debugging
         8: datalines
         7: post metadata
         6: history status (e.g., content removed)
         5: file added/appended
         4: 
         3: errors related to non-existent or inaccessible subreddits
-        2: PRAWblematic errors ### TO-DO in __main__
+        2: PRAWblematic errors ### TO-DO in __main__ (not implemented)
         1: unanticipated script errors
         0: ignoring all errors
         
@@ -61,7 +63,7 @@ log_level = 2
 debug = False
 log_out = 'log.txt' 
 
-def log(text, level=9, log_level=log_level, debug=debug, outfile=log_out, sentry=True):
+def log(text, level=9, log_level=log_level, debug=debug, outfile=log_out, sentry=False):
     if level<=log_level:
         if debug:
             print(str(text)+'\n')
@@ -219,7 +221,7 @@ HANDLES OBJECT METADATA AND UPDATES HISTORY FILES
     delay (integer)
         How many seconds to wait before saving a new history checkpoint
             1 hour = 3600 seconds; 1 day = 86400 seconds
-        Note: new or updated content will always be saved
+        Note: new or updated content will be given priority
 """
 delay = 2*60*60
 def metadata(dir_target, obj, obj_type, delay=delay):
@@ -360,5 +362,5 @@ def cycle(subs=sublist, timeout=timeout):
 
 
 if __name__ == '__main__':
-    r_client.captureMessage('Reddit scraper initiated.')
+    #r_client.captureMessage('Reddit scraper initiated.')
     cycle()

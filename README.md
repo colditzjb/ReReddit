@@ -1,4 +1,4 @@
-# refreddit
+# refreddit (i.e., REFresh REDDIT data)
 
 Documentation is somewhat lacking, so feel free to pull and update this if you figure out how to use the code. If you come up with a creative way to work with the resulting data, please share that also! This is just a text capture tool for now. It's not particularly useful in subreddits that are mostly composed of images and links, unless you are really interested in the comment text.
 

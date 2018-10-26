@@ -1,5 +1,5 @@
 # REFREDDIT (i.e., REFresh REDDIT data)
-A Python script to capture semi-real-time Reddit text data.
+A Python script to capture semi-realtime Reddit text data.
 
 ### Overview:
 Documentation is somewhat lacking, so feel free to pull and push this README if you decide to play with the code. If you come up with a creative way to work with the resulting data, please share that also! This is just a text capture tool for now. Text capture is not particularly useful in subreddits that are mostly comprised of images and links, unless you are really interested in the comment text.

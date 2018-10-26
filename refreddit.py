@@ -252,7 +252,9 @@ def metadata(dir_target, obj, obj_type, delay=delay):
         comments = int(obj.num_comments)
     else:
         comments = ''
-        
+
+    # This pulls numeric badge data for subs like "stopsmoking" or "stopdrinking" (i.e., # of days on the wagon)
+    # It's mostly useless outside of these particular use cases, but you can obtain user "flair" here if desired
     try: days = int(obj.author_flair_text.split(' ')[0])
     except: days = ''
     

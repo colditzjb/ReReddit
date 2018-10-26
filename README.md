@@ -27,4 +27,4 @@ An obvious limitation of this code is that it doesn't actually do anything with 
 * Creating text corpora of all collected posts and/or comments from selected subreddits. This would need to be customizable, so that others could easily pass arguments to define some output parameters (e.g., select only posts or only comments, filter by post date, minimum or maximum text length, prefer original vs. edited content, etc.).
 * Re-create the original thread structure (i.e., comments and response nesting) in tree format, or compiling comment output in some semblance of thread structure for discourse analysis. 
 * Evaluating descriptive stastictics of subreddits (e.g., post frequency, number of comments per post, most/least active days or times for posting).
-* Other stuff welcome too - use your imagination!
+* Other stuff is welcome too - use your imagination!

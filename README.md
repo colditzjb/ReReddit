@@ -2,7 +2,7 @@
 
 Documentation is somewhat lacking, so feel free to pull and update this if you figure out how to use the code. If you come up with a creative way to work with the resulting data, please share that also! This is just a text capture tool for now. It's not particularly useful in subreddits that are mostly composed of images and links, unless you are really interested in the comment text.
 
-The ```refreddit.py``` script uses Reddit's PRAW library (so install that first) and connects you to the Reddit API (you must provide your own Reddit developer credentials for this). The process runs on an endless loop until you manually kill it. One of my implementations has been running consistently for 8+ months. This is a fun tool to put on a Raspberry Pi and promply forget about (remember to set up crontab to re-start it on reboot).
+The ```refreddit.py``` script uses Reddit's PRAW library (so install that first) and connects you to the Reddit API (you must provide your own Reddit developer credentials for this). The process runs on an endless loop until you manually kill it. One of my implementations has been running consistently for 8+ months. This is a fun script to run on a Raspberry Pi and promply forget about (remember to set up crontab to re-start it on reboot).
 
 
 ### Behavior

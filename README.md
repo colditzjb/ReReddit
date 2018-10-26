@@ -2,9 +2,9 @@
 A Python script to capture semi-realtime Reddit text data.
 
 ### Overview:
-Documentation is somewhat lacking, so feel free to pull and push this README if you decide to play with the code. If you come up with a creative way to work with the resulting data, please share that also! This is just a text capture tool for now. Text capture is not particularly useful in subreddits that are mostly comprised of images and links, unless you are really interested in the comment text.
+Documentation is somewhat lacking in details and examples, so feel free to fork and pull request this README if you decide to play with the code. If you come up with a creative way to work with the resulting data, please share that also! This is just a text capture tool for now. Text capture is not particularly useful in subreddits that are mostly comprised of images and links, unless you are really interested in the comment text.
 
-The ```refreddit.py``` script uses Reddit's [PRAW](https://github.com/praw-dev/praw) library (so install that first) and connects you to the [Reddit API](https://www.reddit.com/dev/api/) (you need to [get Reddit developer credentials](https://redditclient.readthedocs.io/en/latest/oauth/) for this). The process runs an endless data collection loop until you manually kill it. One of my implementations has been running consistently for 8+ months. This is a fun process to set-and-forget on a Raspberry Pi or similar low-maintenance, seldom-interfaced, usually-uptime Linux system (but remember to set up _crontab_ to re-start it on reboot).
+The ```refreddit.py``` script uses Reddit's [PRAW](https://github.com/praw-dev/praw) library (so install that first) and connects you to the [Reddit API](https://www.reddit.com/dev/api/) (you need to [get Reddit developer credentials](https://redditclient.readthedocs.io/en/latest/oauth/) for this). The process runs an endless data collection loop until you manually kill it. One of my implementations has been running consistently for 8+ months. This is a fun process to set-and-forget on a Raspberry Pi or similar low-maintenance, seldom-interfaced, usually-uptime Linux system (you may want to [set up _crontab_ to start it on reboot](https://learn.pimoroni.com/tutorial/sandyj/running-scripts-at-boot)).
 
 
 ### Behavior:
@@ -21,3 +21,10 @@ The process relies on reviewing metadata output to know what new data needs coll
 
 This implementation includes an optional dependency on Sentry's Raven library so that errors can be re-broadcast to a Slack channel or other notification platform. I think that I managed to comment-out all of those dependencies in the code. 
 
+### Wishlist:
+An obvious limitation of this code is that it doesn't actually do anything with the data after they are collected. I am up for including additional scripts in this repository if they are useful for broad use cases. A few examples of useful functions might be:
+
+* Creating text corpora of all collected posts and/or comments from selected subreddits. This would need to be customizable, so that others could easily pass arguments to define some output parameters (e.g., select only posts or only comments, filter by post date, minimum or maximum text length, prefer original vs. edited content, etc.).
+* Re-create the original thread structure (i.e., comments and response nesting) in tree format, or compiling comment output in some semblance of thread structure for discourse analysis. 
+* Evaluating descriptive stastictics of subreddits (e.g., post frequency, number of comments per post, most/least active days or times for posting).
+* Other stuff - use your imagination!

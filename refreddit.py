@@ -362,5 +362,5 @@ def cycle(subs=sublist, timeout=timeout):
 
 
 if __name__ == '__main__':
-    #r_client.captureMessage('Reddit scraper initiated.')
+    #r_client.captureMessage('Reddit scraper initiated.') # If using Raven and you want to log process startup
     cycle()

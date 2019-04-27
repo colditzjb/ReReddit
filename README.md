@@ -1,4 +1,4 @@
-# REFREDDIT (i.e., REFresh REDDIT data)
+# RefReddit (i.e., REFresh REDDIT data)
 Here is a Python script to capture real-time Reddit text data. This code was initially developed for the [Center for Research on Media, Technology, and Health](http://mth.pitt.edu/) at the University of Pittsburgh. We're primarily interested in Reddit discussions about recovery from problematic alcohol, smoking/vaping, and other substance use. If you are interested in collaborating along this line of research, you can contact us at crmth@pitt.edu
 
 ### Overview:

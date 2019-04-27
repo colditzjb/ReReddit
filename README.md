@@ -17,14 +17,14 @@ _Note:_ Because the data consist of many small files, a file system formatted wi
 ### Other technical notes:
 The Reddit API is rate limited, so data refresh frequency is inversely related to the number of subreddits that you scour. Selecting many highly-active subreddits will slow the refresh rate, for sure. Choose wisely. 
 
-The process relies on reviewing metadata output to know what new data needs collecting. If you remove files or folders from the established data output directories, it will assume that the data don't exist and waste time recollecting them. Posts older than 180 days are "locked" by Reddit so those _might_ be safe to move (but only if they preceed the 1000 most recent posts - there's some ambiguity around this in the code because I only just thought about it while typing this sentence). The current refresh settings _probably_ ignore posts that are older than 30 days, because I picked an arbitrary number to reduce API call overhead. Change the refresh settings and relocate output data at your own risk!
+The process relies on reviewing metadata output to know what new data needs collecting. If you remove files or folders from the established data output directories, it will assume that the data don't exist and waste time recollecting them. Posts older than 180 days are "locked" by Reddit so those _might_ be safe to move (but only if they preceed the 1000 most recent posts - there's some ambiguity around this in the Reddit API documentation). The current refresh settings _generally_ ignore posts that are older than 30 days, because I picked an arbitrary number to reduce API call overhead. Change the refresh settings and relocate output data as appropriate for your use case.
 
-This implementation includes an optional dependency on Sentry's Raven library so that errors can be re-broadcast to a Slack channel or other notification platform. I think that I managed to comment-out all of those dependencies in the code. 
+This implementation includes an optional dependency on Sentry's Raven library so that errors can be re-broadcast to a Slack channel or other notification platform. I commented-out those dependencies in the code. 
 
-### Wishlist for future code:
+### Wishlist for future development:
 An obvious limitation of this code is that it doesn't actually do anything with the data after they are collected. I am up for including additional scripts in this repository if they are useful for broad use cases. A few examples of useful functions might be:
 
-* Creating text corpora of all collected posts and/or comments from selected subreddits. This would need to be customizable, so that others could easily pass arguments to define some output parameters (e.g., select only posts or only comments, filter by post date, minimum or maximum text length, prefer original vs. edited content, etc.).
+* Creating linguistic corpora of all collected posts and/or comments from selected subreddits. This would need to be customizable, so that others could easily pass arguments to define some output parameters (e.g., select only posts or only comments, filter by post date, minimum or maximum text length, prefer original vs. edited content, etc.).
 * Re-create the original thread structure (i.e., comments and response nesting) in tree format, or compiling comment output in some semblance of thread structure for discourse analysis. 
-* Evaluating descriptive stastictics of subreddits (e.g., post frequency, number of comments per post, most/least active days or times for posting).
-* Other stuff is welcome too - use your imagination!
+* Evaluating descriptive stastictics of subreddits (e.g., post frequency, number of comments per post, most/least active days or times for posting). I have a working script to accomplish some of this, but it is not yet in the public repository. 
+* Other features are welcome too - use your imagination!
